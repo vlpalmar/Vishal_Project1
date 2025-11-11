@@ -1,8 +1,8 @@
 import os
 import streamlit as st
 from dotenv import load_dotenv
-from scraper import fetch_website_contents
-from IPython.display import Markdown, display
+#from scraper import fetch_website_contents
+#from IPython.display import Markdown, display
 from openai import OpenAI
 
 #load_dotenv(override=True)
@@ -48,4 +48,5 @@ def getResponse(user_input):
 user_input = st.text_input("Enter your prompt and press enter")
 if user_input:
  response = getResponse(user_input)
+
  st.write(response)
