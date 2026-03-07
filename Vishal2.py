@@ -2,6 +2,9 @@ import os
 import streamlit as st
 from dotenv import load_dotenv
 from openai import OpenAI
+from pypdf import PdfReader
+import gradio as gr
+
  
 #For running remotely use this to get api 
 api_key = st.secrets['OPENAI_API_KEY']
