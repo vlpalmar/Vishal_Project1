@@ -71,7 +71,7 @@ if prompt := st.chat_input("Say something"):
     with st.chat_message("assistant"):
         # Use st.write_stream for a ChatGPT-like streaming effect
         stream = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",
             messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
             stream=True, # Enable streaming
         )
