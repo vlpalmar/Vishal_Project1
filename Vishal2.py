@@ -3,7 +3,7 @@ import streamlit as st
 from dotenv import load_dotenv
 from openai import OpenAI
 from pypdf import PdfReader
-import gradio as gr
+#import gradio as gr
 
  
 #For running remotely use this to get api 
@@ -48,5 +48,6 @@ def chat(message, history):
     response = openai.chat.completions.create(model="gpt-4o-mini", messages=messages)
     return response.choices[0].message.content
 
-gr.ChatInterface(chat, type="messages").launch()
+print(name)
+#gr.ChatInterface(chat, type="messages").launch()
 
