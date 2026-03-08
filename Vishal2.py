@@ -48,12 +48,12 @@ def chat(message, history):
     response = openai.chat.completions.create(model="gpt-4o-mini", messages=messages)
     return response.choices[0].message.content
 
-st.write(name)
+#st.write(name)
 
 # Initialize chat history in session state
 if "messages" not in st.session_state:
     st.session_state.messages = []
-    st.session_state.messages.append({"role": "assistant", "content": "How can I help you today?"})
+    st.session_state.messages.append({"role": "system", "content": system_prompt})
 
 # Display chat messages from history
 for message in st.session_state.messages:
