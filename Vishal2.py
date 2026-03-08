@@ -48,20 +48,5 @@ def chat(message, history):
     response = openai.chat.completions.create(model="gpt-4o-mini", messages=messages)
     return response.choices[0].message.content
 
-def echo(message, history):
-    return "Gradio says: " + message
-
-demo =  gr.ChatInterface(fn=echo)
-
-if __name__ == "__main__":
-    # Launch it, usually runs on port 7860
-    demo.launch(server_port=7860)
-Emb
-
-import streamlit.components.v1 as components
-
-st.title("Streamlit with Gradio Chatbot")
-
-# Embed the Gradio App
-components.iframe("http://localhost:7860", height=600)
+gr.ChatInterface(chat, type="messages").launch()
 
