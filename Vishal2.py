@@ -63,7 +63,7 @@ for message in st.session_state.messages:
 # Get user input
 if prompt := st.chat_input("Say something"):
     # Add user message to chat history and display
-    st.session_state.messages.append({"role": "system", "content": system_prompt})
+    st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
