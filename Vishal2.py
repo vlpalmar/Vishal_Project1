@@ -48,6 +48,6 @@ def chat(message, history):
     response = openai.chat.completions.create(model="gpt-4o-mini", messages=messages)
     return response.choices[0].message.content
 
-#st.write(name)
-gr.ChatInterface(chat, type="messages").launch()
+st.write(name)
+#gr.ChatInterface(chat, type="messages").launch()
 
