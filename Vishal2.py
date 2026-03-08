@@ -27,3 +27,7 @@ for page in reader.pages:
     text = page.extract_text()
     if text:
         linkedin += text
+
+st.write(linkedin)
+
+
