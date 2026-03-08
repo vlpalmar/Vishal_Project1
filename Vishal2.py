@@ -56,9 +56,9 @@ if "messages" not in st.session_state:
     st.session_state.messages.append({"role": "system", "content": system_prompt})
 
 # Display chat messages from history
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+#for message in st.session_state.messages:
+    #with st.chat_message(message["role"]):
+        #st.markdown(message["content"])
 
 # Get user input
 if prompt := st.chat_input("Say something"):
