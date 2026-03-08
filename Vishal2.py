@@ -50,20 +50,36 @@ def chat(message, history):
 
 st.write(name)
 
-st.title("Simple Chat")
-
-# Initialize chat history
+# Initialize chat history in session state
 if "messages" not in st.session_state:
     st.session_state.messages = []
+    st.session_state.messages.append({"role": "assistant", "content": "How can I help you today?"})
 
 # Display chat messages from history
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# User input and echo response
-if prompt := st.chat_input("What is up?"):
+# Get user input
+if prompt := st.chat_input("Say something"):
+    # Add user message to chat history and display
     st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.markdown(prompt)
+
+    # Generate and display assistant response
+    with st.chat_message("assistant"):
+        # Use st.write_stream for a ChatGPT-like streaming effect
+        stream = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
+            stream=True, # Enable streaming
+        )
+        response = st.write_stream(stream)
+    
+    # Add assistant response to chat history
+    st.session_state.messages.append({"role": "assistant", "content": response})
+
 
 #gr.ChatInterface(chat, type="messages").launch()
 
