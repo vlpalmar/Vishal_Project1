@@ -51,7 +51,7 @@ def chat(message, history):
 def echo(message, history):
     return "Gradio says: " + message
 
-demo = gr.ChatInterface(chat, type="messages").launch()
+demo =  gr.ChatInterface(fn=echo)
 
 if __name__ == "__main__":
     # Launch it, usually runs on port 7860
